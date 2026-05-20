@@ -1,0 +1,17 @@
+# Build-time requirements for the URL Health Checker.
+# Install with:
+#   pip install -r requirements.txt
+#
+# Pinning policy: lower bounds only. We don't pin upper bounds in development
+# because we want bugfixes; the actual frozen build captures whatever versions
+# were resolved at build time, so end-users are unaffected by upstream churn.
+
+# --- Runtime dependencies ---
+aiohttp>=3.9.0          # core engine; HEAD/GET, retries, SSL
+openpyxl>=3.1.0         # Excel input + output (.xlsx only)
+PySide6>=6.6.0          # GUI (Qt for Python 6)
+certifi>=2024.0.0       # CA bundle for TLS in frozen builds (optional but
+                        # recommended; see urlcheck.spec for why)
+
+# --- Build dependencies ---
+pyinstaller>=6.0.0      # packaging into standalone executables
